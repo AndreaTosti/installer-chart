@@ -36,12 +36,17 @@ jobs:
       - name: Replace App Version in Chart.yaml
         run: sed -i 's/APP_VERSION/${{ steps.app_version.outputs.tag }}/g' ./chart/Chart.yaml
 
-      - name: Publish Helm chart
-        uses: stefanprodan/helm-gh-pages@master
+      - name: Set up Helm
+        uses: azure/setup-helm@v4.1.0
+
+      - name: Package
+        run: |
+          helm package ./chart
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          token: ${{ secrets.HELM_CHARTS_BOT }}
-          charts_dir: ./
-          charts_url: https://charts.krateo.io
-          owner: krateoplatformops
-          repository: helm-charts
-          branch: gh-pages
+          files: |
+            *.tgz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
