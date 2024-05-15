@@ -199,7 +199,7 @@ spec:
           kind: Service
           metadata:
             name: krateo-gateway
-          selector: .status.loadBalancer.ingress[0].ip
+          selector: .status.loadBalancer.ingress[0].hostname
 
     - id: extract-gateway-lb-port
       type: var
@@ -278,7 +278,7 @@ spec:
           kind: Ingress
           metadata:
             name: krateo-gateway
-          selector: .status.loadBalancer.ingress[0].ip
+          selector: .status.loadBalancer.ingress[0].hostname
 
     - id: extract-gateway-ingress-host
       type: var
@@ -456,7 +456,7 @@ spec:
           kind: Service
           metadata:
             name: authn-service
-          selector: .status.loadBalancer.ingress[0].ip
+          selector: .status.loadBalancer.ingress[0].hostname
 
     - id: extract-authn-lb-port
       type: var
@@ -479,7 +479,7 @@ spec:
           kind: Ingress
           metadata:
             name: authn-service
-          selector: .status.loadBalancer.ingress[0].ip
+          selector: .status.loadBalancer.ingress[0].hostname
 
     - id: extract-authn-ingress-host
       type: var
@@ -587,7 +587,7 @@ spec:
           kind: Service
           metadata:
             name: krateo-bff
-          selector: .status.loadBalancer.ingress[0].ip
+          selector: .status.loadBalancer.ingress[0].hostname
 
     - id: extract-bff-lb-port
       type: var
@@ -609,7 +609,7 @@ spec:
           kind: Ingress
           metadata:
             name: krateo-bff
-          selector: .status.loadBalancer.ingress[0].ip
+          selector: .status.loadBalancer.ingress[0].hostname
 
     - id: extract-bff-ingress-host
       type: var

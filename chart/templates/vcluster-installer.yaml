@@ -262,7 +262,7 @@ spec:
           kind: Service
           metadata:
             name: vcluster-k8s-lb
-          selector: .status.loadBalancer.ingress[0].ip
+          selector: .status.loadBalancer.ingress[0].hostname
 
     - id: extract-vcluster-lb-port
       type: var
